@@ -2,7 +2,6 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 using SupermarketWEB.Data;
 
-
 namespace SupermarketWEB
 {
     public class Program

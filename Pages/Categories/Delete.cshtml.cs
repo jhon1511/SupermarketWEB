@@ -28,15 +28,17 @@ namespace SupermarketWEB.Pages.Categories
 
             var category = await _context.Categories.FirstOrDefaultAsync(m => m.Id == id);
 
-            if (category == null)
-            {
-                return NotFound();
-            }
-            else
+            if (category != null)
             {
                 Category = category;
+                _context.Categories.Remove(category);
+                await _context.SaveChangesAsync();
             }
-            return Page();
+            //else
+            //{
+            //    Category = category;
+            //}
+            return RedirectToPage("./Index");
         }
        
     }
