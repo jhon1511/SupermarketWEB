@@ -1,27 +1,22 @@
 ﻿using Microsoft.AspNetCore.Mvc.RazorPages;
 using SupermarketWEB.Data;
 using SupermarketWEB.Models;
-using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace SupermarketWEB.Pages.Categories
+
+namespace SupermarketWEB.Pages
 {
     public class IndexModel : PageModel
     {
-        private readonly SupermarketContext _context;
+        private readonly ILogger<IndexModel> _logger;
 
-        public IndexModel(SupermarketContext context)
+        public IndexModel(ILogger<IndexModel> logger)
         {
-			_context = context;
+			_logger = logger;
         }
 
-        public IList<Category> Categories { get; set; } = default!;
-
-        public async Task OnGetAsync()
+        public void OnGet()
         {
-            if(_context.Categories != null)
-            {
-                Categories = await _context.Categories.ToListAsync();
-            }
+
         }
 
     }
