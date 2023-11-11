@@ -10,12 +10,12 @@ namespace SupermarketWEB.Pages.Categories
     {
         private readonly SupermarketContext _context;
 
-        public IndexModel(SupermarketContext context)
+        public IndexModel(SupermarketContext context) 
         {
             _context = context;
         }
 
-        public IList<Category> Categories { get; set; } = default!;
+    public IList<Category> Categories { get; set; } = default!;
 
         public async Task OnGetAsync()
         {
