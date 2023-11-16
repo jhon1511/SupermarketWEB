@@ -5,9 +5,9 @@
 }
 <h1>Index Products</h1>
 
-@* <p>
+ <p>
 	<a asp-page="Create" class="btn btn-success">Create New</a>
-</p> *@
+</p> 
 
 <table class="table">
 	<thead>
@@ -40,10 +40,13 @@
 				<td>
 					@Html.DisplayFor(modelItem => item.Stock)
 				</td>
-				@* <td>
+				<td>
+					@Html.DisplayFor(modelItem => item.Category.Name)
+				</td>
+				 <td>
 					<a asp-page="./Edit" asp-route-id="@item.Id" class="btn btn-warning">Edit</a>
 					<a asp-page="./Delete" asp-route-id="@item.Id" class="btn btn-danger">Delete</a>
-				</td> *@
+				</td> 
 			</tr>
 		}
 	</tbody>

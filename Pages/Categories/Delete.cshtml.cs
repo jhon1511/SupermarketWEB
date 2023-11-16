@@ -34,10 +34,10 @@ namespace SupermarketWEB.Pages.Categories
                 _context.Categories.Remove(category);
                 await _context.SaveChangesAsync();
             }
-            //else
-            //{
-            //    Category = category;
-            //}
+            else
+            {
+                Category = category;
+            }
             return RedirectToPage("./Index");
         }
        
