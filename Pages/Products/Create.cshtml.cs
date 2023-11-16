@@ -39,7 +39,6 @@ namespace SupermarketWEB.Pages.Products
 			}
 			_context.Products.Add(Product);
 			await _context.SaveChangesAsync();
-
 			return RedirectToPage("./Index");
 		}
 	}
