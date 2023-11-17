@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using SupermarketWEB.Data;
+using SupermarketWEB.Models;
 
 namespace SupermarketWEB.Pages.Pay_Modes
 {
@@ -13,19 +14,19 @@ namespace SupermarketWEB.Pages.Pay_Modes
             _context = context;
         }
         [BindProperty]
-        public PayModes PayModes { get; set; } = default!;
+        public Pay_Mode PayModes { get; set; } = default!;
         public async Task<IActionResult> OnGetAsync(int? id)
         {
             if (id == null || _context.Categories == null)
             {
                 return NotFound();
             }
-            var paymode = await _context.PayModes.FirstOrDefaultAsync(m => m.Id == id);
+            var paymode = await _context.Pay_Modes.FirstOrDefaultAsync(m => m.Id == id);
             if (paymode == null)
             {
                 return NotFound();
             }
-            PayMode = paymode;
+            PayModes = paymode;
             return Page();
         }
         public async Task<IActionResult> OnPostAsync()
@@ -34,14 +35,14 @@ namespace SupermarketWEB.Pages.Pay_Modes
             {
                 return NotFound();
             }
-            _context.Attach(PayMode).State = EntityState.Modified;
+            _context.Attach(PayModes).State = EntityState.Modified;
             try
             {
                 await _context.SaveChangesAsync();
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!PayModeExists(PayMode.Id))
+                if (!PayModeExists(PayModes.Id))
                 {
                     return NotFound();
                 }
@@ -56,7 +57,7 @@ namespace SupermarketWEB.Pages.Pay_Modes
 
         private bool PayModeExists(int id)
         {
-            return (_context.PayModes?.Any(e => e.Id == id)).GetValueOrDefault();
+            return (_context.Pay_Modes?.Any(e => e.Id == id)).GetValueOrDefault();
         }
     }
 }
